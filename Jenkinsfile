@@ -1,4 +1,10 @@
 node {
+  stage("List S3 buckets") {
+    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AKIAVQVIMNLDD7MYZUUY', passwordVariable: 'l3BiUzmYdHX1COSYi5w1Bh2Ar+AK45HM1WlfImRY']])
+    {
+        AWS("--region=eu-east-2 rds describe-db-snapshots")
+    }
+  }
   ws { 
       deleteDir()
     stage ('Deleting snapshot '){
